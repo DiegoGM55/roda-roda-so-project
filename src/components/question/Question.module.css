@@ -1,0 +1,11 @@
+.question{
+    border: 6px solid rgb(172, 171, 171);
+    border-radius: 40px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #1d2041;
+    color: white;
+    width: 840px;
+    margin: 20px auto;
+    text-align: center;
+}

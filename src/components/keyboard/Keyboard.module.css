@@ -1,0 +1,23 @@
+.key{
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgb(2, 2, 2);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: black;
+    text-transform: uppercase;
+}
+
+.keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    width: 840px;
+    margin: 0 auto;
+}
