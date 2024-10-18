@@ -1,0 +1,30 @@
+.screen{
+    display: block;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .word{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    margin: 10px 0;
+  }
+  
+  .letter{
+    min-width: 20px;
+    min-height: 40px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #000;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+  
