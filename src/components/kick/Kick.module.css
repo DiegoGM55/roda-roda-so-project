@@ -1,0 +1,56 @@
+.kick-word{
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .kick-word button{
+    background-color: #fff;
+    border: none;
+    color: #1d2041;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.3s;
+  }
+  
+  .kick-word button:hover{
+    background-color: #c5c5c2;
+  }
+
+  .kick-word button:disabled{
+    background-color: #c5c5c2;
+    cursor: not-allowed;
+  }
+
+  .kick-word div {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .kick-word input {
+    border-radius: 12px;
+    border: none;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    padding: 15px;
+    width: 100%;
+  }
+  
+  .kick-inputs {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    margin-top: 20px;
+  }
+  
+  .kick-inputs.show {
+    max-height: 500px;
+  }

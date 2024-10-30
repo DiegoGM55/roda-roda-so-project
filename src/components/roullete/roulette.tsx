@@ -1,40 +1,26 @@
-import { useState } from 'react';
 import { Wheel } from 'react-custom-roulette'
 import styles from './Roulette.module.css'
-
-const data = [
-  { option: '400', style: { backgroundColor: 'green', textColor: 'black' } },
-  { option: '100', style: { backgroundColor: 'orange', textColor: 'black' } },
-  { option: '200', style: { backgroundColor: 'yellow', textColor: 'black' } },
-  { option: '300', style: { backgroundColor: 'pink', textColor: 'black' } },
-  { option: '500', style: { backgroundColor: 'red', textColor: 'black' } },
-  { option: 'Perdeu tudo', style: { backgroundColor: 'black', textColor: 'white' } },
-  { option: 'Passa a vez', style: { backgroundColor: 'white', textColor: 'black' } },
-  { option: '400', style: { backgroundColor: 'green', textColor: 'black' } },
-  { option: '100', style: { backgroundColor: 'orange', textColor: 'black' } },
-  { option: '200', style: { backgroundColor: 'yellow', textColor: 'black' } },
-  { option: '300', style: { backgroundColor: 'pink', textColor: 'black' } },
-  { option: '500', style: { backgroundColor: 'red', textColor: 'black' } },
-  { option: 'Perdeu tudo', style: { backgroundColor: 'black', textColor: 'white' } },
-  { option: 'Passa a vez', style: { backgroundColor: 'white', textColor: 'black' } },
-]
-
+import { prizes } from '../../data/prizes';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { spinRoulette, stopRoulette } from '../../store/slices/rouletteSlice';
 interface RouletteProps {
   onPrizeSelected: (prizeNumber: number) => void;
 }
 
 const Roulette: React.FC<RouletteProps> = ({ onPrizeSelected }) => {
-  const [mustSpin, setMustSpin] = useState(false);
-  const [prizeNumber, setPrizeNumber] = useState(0);
+  const dispatch = useDispatch();
+  const { mustSpin, prizeNumber, hasSpun } = useSelector((state: RootState) => state.roulette);
 
   const handleSpinClick = () => {
-    const newPrizeNumber = Math.floor(Math.random() * data.length);
-    setPrizeNumber(newPrizeNumber);
-    setMustSpin(true);
+    if (!hasSpun) {
+      const newPrizeNumber = Math.floor(Math.random() * prizes.length);
+      dispatch(spinRoulette(newPrizeNumber));
+    }
   };
 
   const handleStopSpinning = () => {
-    setMustSpin(false);
+    dispatch(stopRoulette());
     onPrizeSelected(prizeNumber);
   };
 
@@ -43,12 +29,12 @@ const Roulette: React.FC<RouletteProps> = ({ onPrizeSelected }) => {
     <Wheel
       mustStartSpinning={mustSpin}
       prizeNumber={prizeNumber}
-      data={data}
+      data={prizes}
       backgroundColors={['#3e3e3e', '#df3428']}
       textColors={['#ffffff']}
       onStopSpinning={() => handleStopSpinning()}
     />
-    <button className={styles.button} onClick={() => handleSpinClick()}>Girar</button>
+    <button className={styles.button} onClick={() => handleSpinClick()} disabled={hasSpun}>Girar</button>
   </>
 )
 }

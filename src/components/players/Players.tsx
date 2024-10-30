@@ -3,19 +3,28 @@ import PlayerCard from './PlayerCard';
 
 interface Player {
     name: string;
-    points: number;
+    score: number;
+    totalScore: number;
     color: string;
-  }
+}
   
 interface PlayersProps {
     players: Player[];
+    currentPlayerIndex: number;
 }
 
-const Players: React.FC<PlayersProps> = ({ players }) => {
+const Players: React.FC<PlayersProps> = ({ players, currentPlayerIndex }) => {
     return (
         <div className={style.players}>
             {players.map((player, index) => (
-                <PlayerCard key={index} name={player.name} points={player.points} color={player.color} />
+                <PlayerCard
+                    key={index}
+                    name={player.name}
+                    score={player.score}
+                    color={player.color}
+                    totalScore={player.totalScore}
+                    isCurrentPlayer={index === currentPlayerIndex}
+              />
             ))}
         </div>
     );

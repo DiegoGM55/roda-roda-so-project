@@ -18,7 +18,6 @@
     font-size: 25px;
     font-weight: 700;
     color: #000;
-    background-color: #fff;
     border: 1px solid #000;
     text-transform: uppercase;
     text-align: center;
@@ -26,5 +25,9 @@
     justify-content: center;
     align-items: center;
     padding: 5px;
+  }
+
+  .letter-background{
+    background-color: #fff;
   }
   

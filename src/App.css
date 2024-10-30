@@ -6,39 +6,40 @@
 
 .background{
   background: rgb(14,14,102);
-  background: linear-gradient(90deg, rgba(14,14,102,1) 0%, rgba(98,133,250,1) 50%, rgba(14,14,102,1) 100%); 
+  background: radial-gradient(circle, rgba(14,14,102,1) 0%, rgba(98,133,250,1) 0%, rgba(14,14,102,1) 89%);
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .container{
   height: 100%;
-  gap: 20px;
+  gap: 100px;
   display: flex;
 }
 
 .col-1{
   height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 5rem;
+  justify-content: space-around;
+  gap: 20px;
 }
 
-.col-2{
+.col-2 {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   flex-direction: column;
   box-sizing: border-box;
 }
 
 .logo-img {
   opacity: 0.5;
-  width: 100%;
+  width: 100%; 
+  max-width: 350px; 
 }
 

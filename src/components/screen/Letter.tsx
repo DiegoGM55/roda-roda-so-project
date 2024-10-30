@@ -7,7 +7,7 @@ interface LetterProps {
 
 const Letter: React.FC<LetterProps> = ({ letter }) => {
     return (
-        <div className={styles.letter}>
+        <div className={`${styles.letter} ${letter !== ' ' ? styles['letter-background'] : ''}`}>
             {letter}
         </div>
     );

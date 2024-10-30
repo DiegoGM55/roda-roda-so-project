@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Modal.module.css';
-import { Player, initializePlayers } from '../../gameLogic/gameLogic';
+import { Player, initializePlayers } from '../../hooks/gameLogic/gameLogic';
+import ImportContactsIcon from '@mui/icons-material/ImportContacts';
+import GamesIcon from '@mui/icons-material/Games';
 
 interface ModalProps {
   onStartGame: (players: Player[]) => void;
@@ -8,11 +10,11 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
   const [showModal, setShowModal] = useState(true);
-  const [players, setPlayers] = useState<Player[]>([{ name: '', points: 0, color: '' }]);
+  const [players, setPlayers] = useState<Player[]>([{ name: '', score: 0, color: '', totalScore: 0 }, { name: '', score: 0, color: '', totalScore: 0 }]);
 
   const handleAddPlayer = () => {
     if (players.length < 4) {
-      setPlayers([...players, { name: '', points: 0, color: '' }]);
+      setPlayers([...players, { name: '', score: 0, color: '', totalScore: 0 }]);
     }
   };
 
@@ -22,7 +24,7 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
   };
 
   const handleChange = (index: number, value: string) => {
-    const newPlayers = players.map((player, i) => 
+    const newPlayers = players.map((player, i) =>
       i === index ? { ...player, name: value } : player
     );
     setPlayers(newPlayers);
@@ -49,41 +51,82 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
   return (
     <div className={styles['modal-overlay']}>
       <div className={styles['modal-content']}>
-        <div className={styles['modal-header']}>Add Players</div>
-        {players.map((player, index) => (
-          <div key={index}>
-            <input
-              type="text"
-              className={styles['player-input']}
-              value={player.name}
-              onChange={(e) => handleChange(index, e.target.value)}
-              placeholder={`Player ${index + 1} Name`}
-            />
-            {index > 0 && (
+        <div className={styles['modal-header']}>Roda a Roda - Sistemas operacionais</div>
+        <div className={styles['modal-body']}>
+        <div className={styles['col-1']}>
+          <h2>
+            <GamesIcon/>
+            {" "} Adicionar jogadores
+          </h2>
+          {players.map((player, index) => (
+            <div className={styles['form-group']} key={index}>
+              <input
+                type="text"
+                className={styles['player-input']}
+                value={player.name}
+                onChange={(e) => handleChange(index, e.target.value)}
+                placeholder={`Nome do Jogador ${index + 1}`}
+              />
+              {index > 1 && (
+                <button
+                  className={`${styles.button} ${styles['remove-button']}`}
+                  onClick={() => handleRemovePlayer(index)}
+                >
+                  Remover
+                </button>
+              )}
+            </div>
+          ))}
+
+          <div className={styles['button-group']}>
+            {players.length < 4 && (
               <button
-                className={`${styles.button} ${styles['remove-button']}`}
-                onClick={() => handleRemovePlayer(index)}
+                className={`${styles.button} ${styles['add-button']}`}
+                onClick={handleAddPlayer}
               >
-                Remove
+                Adicionar Jogador
               </button>
             )}
+            <button
+              className={`${styles.button} ${styles['start-button']}`}
+              onClick={handleStartGame}
+              disabled={handleDisabledButton}
+            >
+              Começar Jogo
+            </button>
           </div>
-        ))}
-        {players.length < 4 && (
-          <button
-            className={`${styles.button} ${styles['add-button']}`}
-            onClick={handleAddPlayer}
-          >
-            Add Player
-          </button>
-        )}
-        <button
-          className={`${styles.button} ${styles['start-button']}`}
-          onClick={handleStartGame}
-          disabled={handleDisabledButton}
-        >
-          Start Game
-        </button>
+        </div>
+        <div className={styles['col-2']}>
+          <h2>
+            <ImportContactsIcon />
+            {"  "}Regras do Jogo
+          </h2>
+          <p>
+            - O jogo é composto por até 4 jogadores, onde cada um terá a oportunidade de girar a roleta e escolher uma letra.
+          </p>
+          <p>
+            - Cada letra escolhida vale a quantidade de pontos que aparecer na roleta vezes a quantidade de aparições nas palavras.
+          </p>
+          <p>
+            - O jogador que acertar a letra escolhida continua jogando, caso contrário, passa a vez para o próximo jogador.
+          </p>
+          <p>
+            - O jogador que acertar a letra escolhida pode escolher entre tentar adivinhar a palavra ou continuar jogando.
+          </p>
+          <p>
+            - Quando o jogador acertar a letra, o valor do prêmio da roleta será multiplicado pela quantidade de vezes que a letra aparece na palavra.
+          </p>
+          <p>
+            - O jogo termina quando todas as palavras de todas as rodadas forem descobertas.
+          </p>
+          <p>
+            - O jogador com o maior número de pontos é o vencedor.
+          </p>
+          <p>
+            Boa sorte!
+          </p>
+        </div>
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,10 @@
+# Roda a roda
+Um jogo inspirado no famoso jogo roda a roda Jequiti.
+
+Este jogo tem como objetivo ensinar a matéria de SO de uma maneira gameficada. 
+A partir de um jogo de pergunstas e respostas.
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -48,4 +55,4 @@ export default tseslint.config({
   },
 })
 ```
-# roda-roda-so-project
+
