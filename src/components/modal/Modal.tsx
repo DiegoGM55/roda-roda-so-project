@@ -3,6 +3,8 @@ import styles from './Modal.module.css';
 import { Player, initializePlayers } from '../../hooks/gameLogic/gameLogic';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 import GamesIcon from '@mui/icons-material/Games';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 interface ModalProps {
   onStartGame: (players: Player[]) => void;
@@ -55,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
         <div className={styles['modal-body']}>
         <div className={styles['col-1']}>
           <h2>
-            <GamesIcon/>
+            <SportsEsportsIcon />
             {" "} Adicionar jogadores
           </h2>
           {players.map((player, index) => (
@@ -84,6 +86,7 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
                 className={`${styles.button} ${styles['add-button']}`}
                 onClick={handleAddPlayer}
               >
+                <GamesIcon/>
                 Adicionar Jogador
               </button>
             )}
@@ -92,10 +95,12 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
               onClick={handleStartGame}
               disabled={handleDisabledButton}
             >
+              <PlayCircleOutlineIcon />
               Começar Jogo
             </button>
           </div>
         </div>
+        <div className={styles['divider']} />
         <div className={styles['col-2']}>
           <h2>
             <ImportContactsIcon />
