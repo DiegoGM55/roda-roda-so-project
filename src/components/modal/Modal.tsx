@@ -119,9 +119,6 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
             - O jogador que acertar a letra escolhida pode escolher entre tentar adivinhar a palavra ou continuar jogando.
           </p>
           <p>
-            - Quando o jogador acertar a letra, o valor do prêmio da roleta será multiplicado pela quantidade de vezes que a letra aparece na palavra.
-          </p>
-          <p>
             - O jogo termina quando todas as palavras de todas as rodadas forem descobertas.
           </p>
           <p>
