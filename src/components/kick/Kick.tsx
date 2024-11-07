@@ -25,10 +25,10 @@ const Kick = ({ currentQuestion, handleKick, words, handleWordsChange }: KickPro
             type="text" 
             placeholder={`Palavra ${index + 1}`}
             value={words[index] || ''}
-            onChange={(e) => handleWordsChange(index, e.target.value)}
+            onChange={(e) => !mustSpin && handleWordsChange(index, e.target.value)}
           />
         ))}
-        <button onClick={() => handleKick(words)} disabled={!mustSpin}>Chutar</button>
+        <button onClick={() => !mustSpin && handleKick(words)}>Chutar</button>
       </div>
     </div>
   );

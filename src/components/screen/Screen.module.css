@@ -1,8 +1,14 @@
+.screen-border{
+  background-color: #24235398;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+
 .screen{
     display: block;
     padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
 
   .word{

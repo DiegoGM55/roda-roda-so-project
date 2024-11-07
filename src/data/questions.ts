@@ -6,20 +6,24 @@ export interface Question {
   
 const questions: Question[] = [
     {
-        question: 'O que é um componente de hardware?',
-        words: ['SSD', 'HDD', 'PLACA DE VIDEO']
+        question: 'Exemplos de hardware gerenciados pelo sistema operacional',
+        words: ['PROCESSADOR', 'MEMORIA RAM'], 
     },
     {
-        question: 'O que é um componente de software?',
-        words: ['ESCALONADOR DE PROCESSOS', 'SISTEMA OPERACIONAL']
+        question: 'Memórias que podem ser usados para armazenar dados de programas.',
+        words: ['HD', 'SSD', 'PEN DRIVE']
     },
     {
-        question: 'Quais são os tipos de memória?',
-        words: ['MEMORIA RAM', 'MEMORIA ROM', 'CACHE']
+        question: 'Atividades e componentes relacionados à inicialização do computador',
+        words: ['BIOS', 'SETUP', 'POST', 'ROM']
     },
     {
-        question: 'Quais são os tipos de armazenamento?',
-        words: ['SSD', 'HDD']
+        question: 'Atividades e componentes relacionados ao encerramento do BIOS',
+        words: ['CARREGAR NUCLEO', 'CARREGAR IC', 'CONTROLADOR DE DMA']
+    },
+    {
+        question: 'Atividades do cotidiano análogas ao escalonamento',
+        words: ['TURNOS DE TRABALHO', 'SINAL DE TRANSITO', 'FILA DE BANCO']
     }
 ];
 
