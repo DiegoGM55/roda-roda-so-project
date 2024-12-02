@@ -125,6 +125,9 @@ const Modal: React.FC<ModalProps> = ({ onStartGame }) => {
             - O jogador com o maior número de pontos é o vencedor.
           </p>
           <p>
+            - Não utilize acentos nas palavras.
+          </p>
+          <p>
             Boa sorte!
           </p>
         </div>

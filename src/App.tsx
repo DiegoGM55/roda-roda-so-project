@@ -36,7 +36,7 @@ function App() {
               <Word key={index} word={word} guessedLetters={guessedLetters} />
             ))}
           </Screen>
-          <div>
+          
             <Question question={questions[currentQuestionIndex].question} />
             <Keyboard onLetterClick={handleLetterClick} guessedLetters={guessedLetters} />
             <Kick 
@@ -45,7 +45,7 @@ function App() {
               words={words}
               handleWordsChange={handleWordsChange}
             />
-          </div>
+
         </div>
         <div className='col-2'>
           <div className='Logo'>
