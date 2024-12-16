@@ -10,6 +10,7 @@ import './App.css';
 import Modal from './components/modal/Modal';
 import { questions } from '../src/data/questions';
 import Kick from './components/kick/Kick';
+import EndPhaseModal from './components/endPhaseModal/EndPhaseModal';
 
 function App() {
   const {
@@ -23,11 +24,19 @@ function App() {
     hasPlayerMakeTheRightKick,
     words,
     handleWordsChange,
+    endPhase,
+    setEndPhase,
   } = useGameLogic();
 
   return (
     <div className='background'>
       <Modal onStartGame={setPlayerList} />
+      <EndPhaseModal showModal={endPhase} setShowModal={setEndPhase} points={(() => {
+        if (playerList.length === 0) {
+          return 0;
+        }
+        return playerList[currentPlayerIndex].totalScore;
+      })()} />
       <div className='container'>
         <div className='col-1'>
           <Players players={playerList} currentPlayerIndex={currentPlayerIndex} />

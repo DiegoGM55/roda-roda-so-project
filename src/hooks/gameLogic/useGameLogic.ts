@@ -13,6 +13,7 @@ export const useGameLogic = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const { prizeNumber, hasSpun, } = useSelector((state: RootState) => state.roulette);
   const [words, setWords] = useState<string[]>([]);
+  const [endPhase, setEndPhase] = useState<boolean>(false);
   const dispatch = useDispatch();
 
   const currentPlayer = playerList[currentPlayerIndex];
@@ -104,7 +105,7 @@ export const useGameLogic = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      alert('Todas as perguntas foram respondidas!');
+      setEndPhase(true);
     }
   };
 
@@ -127,7 +128,7 @@ export const useGameLogic = () => {
 
     if (rightKick) {
       currentPlayer.score += Number(prizes[prizeNumber].option) * correctWords.length;
-      alert(`Você acertou! Adicionando ${currentPlayer.score} pontos...\n E passando para a próxima pergunta!`);
+      setEndPhase(true);
       dispatch(setHasSpun(false));
       moveToNextQuestion();
     } else {
@@ -153,6 +154,8 @@ export const useGameLogic = () => {
     hasSpun,
     currentQuestionIndex,
     words,
+    endPhase,
+    setEndPhase,
     handleWordsChange,
     handleLetterClick,
     handlePrizeSelected,
